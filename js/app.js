@@ -710,7 +710,21 @@ function updateCountdown() {
   const diff = matchDatetime - new Date();
   const group = GROUPS_DATA[nextMatch.group];
   const nameEl = document.getElementById('countdown-match-name');
-  if (nameEl) nameEl.textContent = `${group.flags[nextMatch.home]} ${nextMatch.home} vs ${nextMatch.away} ${group.flags[nextMatch.away]}`;
+  if (nameEl) {
+    nameEl.innerHTML = `
+      <div class="cd-match-layout">
+        <div class="cd-team">
+          ${group.flags[nextMatch.home]}
+          <span>${nextMatch.home}</span>
+        </div>
+        <div class="cd-vs">VS</div>
+        <div class="cd-team">
+          ${group.flags[nextMatch.away]}
+          <span>${nextMatch.away}</span>
+        </div>
+      </div>
+    `;
+  }
 
   if (diff <= 0) {
     ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id => { const e = document.getElementById(id); if (e) e.textContent = '00'; });
