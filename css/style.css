@@ -397,7 +397,52 @@ body::before {
 
 .hero-stats { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
 .hero-stat-value { font-size: 32px; font-weight: 900; color: var(--gold); line-height: 1; margin-bottom: 4px; }
-.hero-stat-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+.hero-stat-label { font-size: 11px; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+
+/* Promo Banner */
+.promo-banner {
+  background: rgba(37, 211, 102, 0.1);
+  border: 1px solid rgba(37, 211, 102, 0.2);
+  border-radius: 12px;
+  padding: 16px;
+  margin: 0 auto 30px auto;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  text-align: center;
+}
+
+.promo-content strong {
+  color: var(--text-primary);
+  font-size: 15px;
+}
+
+.promo-wa-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #25D366;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 99px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  transition: var(--transition);
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+
+.promo-wa-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+}
+
+.wa-icon {
+  width: 20px;
+  height: 20px;
+}
 
 /* ══════════════════════════════════════════════════
    COUNTDOWN
