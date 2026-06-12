@@ -419,29 +419,21 @@ body::before {
   font-size: 15px;
 }
 
-.promo-wa-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: #25D366;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 99px;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 14px;
-  transition: var(--transition);
-  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+.promo-wa-btn-img {
+  display: inline-block;
+  transition: transform 0.2s ease;
+  margin-top: 5px;
 }
 
-.promo-wa-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+.promo-wa-btn-img:hover {
+  transform: scale(1.05);
 }
 
-.wa-icon {
-  width: 20px;
-  height: 20px;
+.wa-img {
+  max-width: 250px;
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* ══════════════════════════════════════════════════
