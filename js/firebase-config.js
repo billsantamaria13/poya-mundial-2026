@@ -13,7 +13,7 @@ const FIREBASE_CONFIG = {
 };
 
 // Contraseña para acceder al panel de admin
-const ADMIN_PASSWORD = "mundial2026admin";
+const ADMIN_PASSWORD = "Sammy2021";
 
 // ── MODO DEMO ──────────────────────────────────────
 // FLAG DE DEMO: Si está en true, se usa localStorage en lugar de Firebase (para que el usuario pruebe local)
