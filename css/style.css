@@ -420,7 +420,43 @@ body::before {
 }
 
 .countdown-label { font-size: 11px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
-.countdown-match-name { font-size: 15px; font-weight: 700; color: var(--text-primary); margin-bottom: 16px; }
+.countdown-match-name { margin-bottom: 20px; width: 100%; }
+
+.cd-match-layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.cd-team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 120px;
+}
+
+.cd-team img.flag-img {
+  width: 48px;
+  height: 36px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  border-radius: 4px;
+}
+
+.cd-team span {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+.cd-vs {
+  font-size: 16px;
+  font-weight: 900;
+  color: var(--text-muted);
+  font-style: italic;
+}
 
 .countdown-timer { display: flex; justify-content: center; gap: 12px; }
 .countdown-unit { text-align: center; }
