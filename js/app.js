@@ -666,7 +666,6 @@ function calculateAndRenderLeaderboard() {
         <div class="lb-rank ${rankClass}">${rankIcon}</div>
         <div class="lb-info">
           <div class="lb-name">${escapeHTML(p.name)}</div>
-          <div class="lb-phone">📱 ${escapeHTML(p.phone)}</div>
         </div>
         <div class="lb-stats">
           <div class="lb-stat">
