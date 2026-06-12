@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin – Poya Mundial 2026</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="css/admin.css">
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+</head>
+<body>
+
+  <!-- ══ AUTH ══ -->
+  <div class="auth-screen" id="auth-screen">
+    <div class="auth-card" id="admin-card">
+      <div class="auth-icon">🔐</div>
+      <h1>Panel Admin</h1>
+      <p>Ingresa la contraseña del administrador</p>
+      <form id="auth-form">
+        <input type="password" id="admin-password" class="auth-input"
+          placeholder="••••••••" autocomplete="current-password" autofocus>
+        <button type="submit" class="auth-submit">Ingresar →</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ══ DASHBOARD ══ -->
+  <div class="admin-dashboard" id="admin-dashboard">
+
+    <header class="admin-header">
+      <div class="admin-header-inner">
+        <div class="admin-logo">
+          <div class="admin-logo-icon">⚽</div>
+          <span>Poya Mundial 2026</span>
+          <span class="admin-badge">Admin</span>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+          <button class="btn-seed" onclick="seedMatchesToFirebase()">
+            📤 Cargar partidos a Firebase
+          </button>
+          <a href="index.html" style="padding:8px 14px;border-radius:8px;background:var(--bg-glass);border:1px solid var(--border);color:var(--text-secondary);text-decoration:none;font-size:13px;font-weight:700;">
+            👁️ Ver sitio
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="admin-main">
+
+      <!-- Stats -->
+      <div class="admin-stats-row">
+        <div class="admin-stat-card">
+          <div class="admin-stat-value" id="completed-count">0/72</div>
+          <div class="admin-stat-label">Partidos jugados</div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="admin-stat-value" id="participants-count">0</div>
+          <div class="admin-stat-label">Participantes</div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="admin-stat-value" id="predictions-count">0</div>
+          <div class="admin-stat-label">Predicciones totales</div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="admin-stat-value">72</div>
+          <div class="admin-stat-label">Fase de grupos</div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="admin-tabs">
+        <button class="admin-tab-btn active" data-tab="partidos" onclick="switchAdminTab('partidos')">⚽ Partidos</button>
+        <button class="admin-tab-btn" data-tab="participantes" onclick="switchAdminTab('participantes')">👥 Participantes</button>
+      </div>
+
+      <!-- ── Panel Partidos ── -->
+      <div class="admin-panel active" id="admin-panel-partidos">
+        <div class="admin-instructions">
+          <strong style="color:var(--gold)">¿Cómo funciona?</strong><br>
+          1. Escribe el marcador (ej: 2 – 1) · 2. Presiona <strong>💾 Guardar</strong> → los puntos de predicciones se calculan automáticamente.<br>
+          Usa 🔴 para marcar un partido como EN VIVO mientras se juega.
+        </div>
+        <div id="admin-matches-container">
+          <div class="loading-state"><div class="spinner"></div> Cargando partidos...</div>
+        </div>
+      </div>
+
+      <!-- ── Panel Participantes ── -->
+      <div class="admin-panel" id="admin-panel-participantes">
+        <div id="participants-table-container">
+          <div class="loading-state"><div class="spinner"></div> Cargando...</div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- ══ MODAL DETALLE PARTICIPANTE ══ -->
+  <div class="detail-overlay" id="detail-overlay">
+    <div class="detail-modal">
+      <div class="detail-header">
+        <div>
+          <h2>📋 Predicciones de</h2>
+          <p id="detail-title" style="color:var(--gold);font-weight:700;margin-top:4px"></p>
+        </div>
+        <button class="modal-close-btn" onclick="closeDetailModal()">✕</button>
+      </div>
+      <div class="detail-legend">
+        <span class="detail-icon exact" style="display:inline">✓✓</span> Exacto (+3 pts)
+        &nbsp;&nbsp;
+        <span class="detail-icon winner" style="display:inline">✓</span> Ganador (+1 pt)
+        &nbsp;&nbsp;
+        <span class="detail-icon miss" style="display:inline">✗</span> Falló (0 pts)
+        &nbsp;&nbsp;
+        <span class="detail-icon no-pred" style="display:inline">○</span> Sin predicción
+      </div>
+      <div id="detail-body" class="detail-body"></div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="admin-toast" role="alert"></div>
+
+  <script src="js/firebase-config.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
