@@ -35,7 +35,7 @@ function handleAuthSubmit(e) {
   e.preventDefault();
   const password = document.getElementById('admin-password').value;
 
-  if (password === ADMIN_PASSWORD) {
+  if (password.trim() === ADMIN_PASSWORD) {
     isAuthenticated = true;
     document.getElementById('auth-screen').style.display = 'none';
     document.getElementById('admin-dashboard').style.display = 'block';
@@ -461,11 +461,6 @@ function switchAdminTab(tab) {
 async function seedMatchesToFirebase() {
   if (!confirm('¿Cargar los 72 partidos a Firebase? Solo hacer esto UNA VEZ.')) return;
   try {
-    const existing = await db.collection('matches').limit(1).get();
-    if (!existing.empty) {
-      showAdminToast('⚠️ Ya existen partidos en Firebase. Borra la colección antes.', 'error');
-      return;
-    }
     const batch = db.batch();
     INITIAL_MATCHES.forEach(m => {
       const ref = db.collection('matches').doc(m.id);
